@@ -1,10 +1,10 @@
-# bower-component-list
+# Bower search server
 
-Aggregated list of components from the [Bower registry](https://bower.herokuapp.com/packages), GitHub metadata, bower.json/package.json keywords.
+> Aggregated list of packages from the [Bower registry](https://github.com/bower/registry), GitHub metadata, bower.json/package.json keywords.
 
-Currently used as the back-end for the [Bower components site](https://github.com/sindresorhus/bower-components).
+Currently used as the back-end for the [Bower search](https://github.com/bower/search).
 
-The registry can also be filtered on a keyword to only get a subset of it. Useful if you for example want to embed a list of plugins for your framework on its website. Example: https://bower-component-list.herokuapp.com/keyword/web-components
+The registry can also be filtered on a keyword to only get a subset of it. Useful if you for example want to embed a list of plugins for your framework on a website. Example: https://bower-component-list.herokuapp.com/keyword/web-components
 
 
 ### Getting Started
@@ -13,7 +13,7 @@ The registry can also be filtered on a keyword to only get a subset of it. Usefu
 
 - Set the environment variables `GITHUB_CLIENT_ID` and `GITHUB_CLIENT_SECRET` from your newly created app. Remember set the `NODE_ENV` to `production` when you deploy.
 
-- Run `node server.js && open http://localhost:8011`
+- Run `npm start`
 
 You can change the port by setting the `PORT` environment variable.
 

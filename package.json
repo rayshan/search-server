@@ -37,5 +37,8 @@
     {
       "type": "MIT"
     }
-  ]
+  ],
+  "scripts": {
+    "start": "node server.js && open http://localhost:8011"
+  }
 }
