@@ -44,8 +44,8 @@ function getDiffFromExistingRepos(newRepos) {
 	}
 }
 
-function fetchKeywords(user, repo, file, cb) {
-	var url = 'https://raw.github.com/' + user + '/' + repo + '/master/'+ file;
+function fetchKeywords(repoJson, file, cb) {
+	var url = 'https://raw.github.com/' + repoJson.owner.login + '/' + repoJson.name + '/' + repoJson.default_branch + '/'+ file;
 
 	request.get(url, {json: true}, function (err, response, body) {
 		if (!err && body && body.keywords) {
@@ -110,9 +110,9 @@ function fetchComponents(fetchNew) {
 						deferred.resolve(createComponentData(el.name, body, keywords));
 					};
 
-					fetchKeywords(user, repo, 'bower.json', function (err, keywords) {
+					fetchKeywords(body, 'bower.json', function (err, keywords) {
 						if (err) {
-							fetchKeywords(user, repo, 'package.json', function (err, keywords) {
+							fetchKeywords(body, 'package.json', function (err, keywords) {
 								complete(keywords);
 							});
 							return;
