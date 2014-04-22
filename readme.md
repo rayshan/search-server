@@ -2,6 +2,8 @@
 
 > Aggregated list of packages from the [Bower registry](https://github.com/bower/registry), GitHub metadata, bower.json/package.json keywords.
 
+**This is a temporary solution while the [new registry](https://github.com/bower/registry) is being built. No new features will implemented**
+
 Currently used as the back-end for the [Bower search](https://github.com/bower/search).
 
 The registry can also be filtered on a keyword to only get a subset of it. Useful if you for example want to embed a list of plugins for your framework on a website. Example: https://bower-component-list.herokuapp.com/keyword/web-components
