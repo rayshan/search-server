@@ -10,7 +10,7 @@ var HTTP_PORT = process.env.PORT || 8011;
 //interval for updating old repos
 var UPDATE_OLD_REPOS_INTERVAL_IN_DAYS =  7;
 //interval for fetching new repos
-var UPDATE_NEW_REPOS_INTERVAL_IN_MINUTES = 60;
+var UPDATE_NEW_REPOS_INTERVAL_IN_MINUTES = 120;
 
 function createEntity(list) {
 	var obj = {json: JSON.stringify(list)};
@@ -42,7 +42,6 @@ function getComponentListEntity(fetchNew) {
 
 function serveComponentList(request, response, next) {
 	if (!entity) {
-		console.error('Entity empty. Registry might not have finished fetching yet.');
 		response.statusCode = 418;
 		response.end();
 		return;
@@ -73,7 +72,7 @@ getComponentListEntity();
 
 connect()
 	.use(connect.errorHandler())
-	.use(connect.timeout(60000))
+	.use(connect.timeout(30000))
 	.use(connect.logger('dev'))
 	.use(connect.compress())
 	.use(serveComponentList)

@@ -70,7 +70,7 @@ function fetchComponents(fetchNew) {
 		return deferred.promise;
 	}).then(function (list) {
 		var apiLimitExceeded = false;
-		var results = list.map(throat(10, function (el) {
+		var results = list.map(throat(5, function (el) {
 			var deferred = Q.defer();
 			var re = /github\.com\/([\w\-\.]+)\/([\w\-\.]+)/i;
 			var parsedUrl = re.exec(el.url.replace(/\.git$/, ''));
@@ -94,7 +94,7 @@ function fetchComponents(fetchNew) {
 				headers: {
 					'User-Agent': 'Node.js'
 				},
-				timeout: 60000
+				timeout: 30000
 			}, function (err, response, body) {
 				if (!err && body && /API Rate Limit Exceeded/.test(body.message)) {
 					apiLimitExceeded = true;
@@ -124,7 +124,7 @@ function fetchComponents(fetchNew) {
 					if (response && response.statusCode === 404) {
 						deferred.resolve();
 					} else {
-						console.log('err github fetch', el.name, response.statusCode, err, body);
+						console.error('err github fetch', el.name, response.statusCode, err, body);
 						deferred.resolve();
 					}
 				}
