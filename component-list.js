@@ -45,7 +45,7 @@ function getDiffFromExistingRepos(newRepos) {
 }
 
 function fetchKeywords(repoJson, file, cb) {
-	var url = 'https://raw.github.com/' + repoJson.owner.login + '/' + repoJson.name + '/' + repoJson.default_branch + '/'+ file;
+	var url = 'https://raw.githubusercontent.com/' + repoJson.owner.login + '/' + repoJson.name + '/' + repoJson.default_branch + '/'+ file;
 
 	request.get(url, {json: true}, function (err, response, body) {
 		if (!err && body && body.keywords) {
